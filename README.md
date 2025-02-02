@@ -1,16 +1,17 @@
-# Skillmate - An eLearning Platform
+# MicroMinds
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ## Introduction
-**Skillmate** is an e-learning platform that allows instructors to create and upload online courses for students. It provides a user-friendly interface for creating and managing courses. Students can browse and enroll in courses of their choice. Skillmate also offers a dashboard for instructors to view their courses' analytics, such as enrollments. Built with Python and Django, Skillmate follows best practices in web development and security.
+Welcome to **MicroMinds**, the micro learning platform designed to transform the way high school students learn.
+Our app delivers bite-sized, focused lessons that make learning efficient, engaging, and fun. 
+Whether you're preparing for exams, exploring new subjects, or reinforcing classroom knowledge, MicroMinds helps you 
+achieve your academic goals—one micro-step at a time.
 
-![skillmate-django-online-learning-platform](https://user-images.githubusercontent.com/106135144/227760997-1512e3cc-f02f-4f3c-9a4f-a76dad267ebe.png)
 
 ## Table of Content
   * [Introduction](#introduction)
@@ -23,11 +24,11 @@
 ## Installation
 1. Clone the repository:
 ```
-https://github.com/ashish-makes/django-lms
+https://github.com/yigitako/MicroMinds.git
 ```
 2. Navigate to the directory:
 ```
-cd skillmate
+cd MicroMinds
 ```
 3. Run the server:
 ```
