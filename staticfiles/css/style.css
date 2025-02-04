@@ -13,7 +13,7 @@
 
 /* Variables */
 :root {
-    --primary-color: #8710d8;
+    --primary-color: #00887A;
     --primary-hover: #6c0daa;
     --text-color: #0e2045;
     --background-color: #fff;
@@ -26,7 +26,7 @@
 /* Body */
 body {
     color: var(--text-color);
-    background: var(--background-color);
+    background: red;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -163,9 +163,11 @@ nav ul li a {
 }
 
 .hero-cta-btn {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+    display: flex !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
 }
 
 /* Footer */
