@@ -66,3 +66,11 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f'{self.student.username} enrolled in {self.course.title}'
+
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    likes = models.PositiveIntegerField(default=0)  # Like counter
+
+    def __str__(self):
+        return self.title

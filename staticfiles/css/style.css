@@ -164,10 +164,11 @@ nav ul li a {
 
 .hero-cta-btn {
     display: flex !important;
+    flex-direction: column !important; /* Stack buttons vertically */
     gap: 1rem !important;
     justify-content: center !important;
+    align-items: center !important; /* Center align the buttons */
     margin-top: 2.5rem;
-    flex-wrap: wrap;
 }
 
 /* Footer */

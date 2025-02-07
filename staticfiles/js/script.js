@@ -1,4 +1,40 @@
 
+
+
+// Like button
+document.addEventListener("DOMContentLoaded", function () {
+    var likeButton = document.getElementById("like-button");
+    if (!likeButton) {
+            console.error("Error: Like button not found!");
+            return;
+        }
+
+        var postId = likeButton.getAttribute("data-post-id");
+
+        if (!postId) {
+            console.error("Error: postId is missing!");
+            return;
+        }
+
+        likeButton.addEventListener("click", function () {
+            console.log("Liking post with ID:", postId);
+
+            fetch("/like/" + postId + "/", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Like successful! New like count:", data.likes);
+                document.getElementById("like-count").innerText = data.likes;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    });
 // ------------------ Desktop Categories ------------------
 
 const CategoryMenu = document.querySelector('.desktop-categories');

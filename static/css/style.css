@@ -34,6 +34,13 @@ body {
   grid-template-rows: auto 1fr; /* Navbar (auto height) + Hero (remaining space) */
 }
 
+.hero-cta-btn {
+    display: flex !important;
+    flex-direction: column !important; /* Stack buttons vertically */
+    gap: 1rem !important;
+    align-items: flex-start !important; /* Center align the buttons */
+}
+
 main {
     flex: 1;
 }
@@ -52,7 +59,7 @@ a{
 }
 
 button {
-    background-color: #8710d8;
+    background-color: var(--button-color);
     border-radius: 4px;
     padding: .5rem 1rem;
     border: none;
@@ -467,7 +474,7 @@ footer span img {
 
 input[type=text] {
     outline: none;
-    border: 2px solid rgba(135, 16, 216, .5);
+    border: 2px solid var(--button-color);
     border-radius: 4px;
     background-color: #fff;
     padding: .5rem .5rem;
@@ -475,7 +482,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-    border: 2px solid rgb(135, 16, 216);
+    border: 2px solid var(--button-color);
 }
 
 input[type=password] {
@@ -1203,6 +1210,7 @@ input[type=email]:focus {
 }
 
 .profile-form input {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.03);
     width: 100%;
 }
 
@@ -1280,6 +1288,7 @@ input[type=email]:focus {
 }
 
 .course-grid {
+    background: red;
     display: grid;
     grid-template-columns: 60% 40%;
     column-gap: .5rem;

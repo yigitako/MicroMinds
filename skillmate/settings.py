@@ -35,7 +35,7 @@ ALLOWED_HOSTS = []
 CSRF_TRUSTED_ORIGINS = ['https://skillmate.up.railway.app']
 
 CORS_ORIGIN_WHITELIST = [
-'https://skillmate.up.railway.app'
+    'https://skillmate.up.railway.app'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -114,18 +114,17 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-
-#django-allauth registraion settings
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+# django-allauth registraion settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-  
+
 # 1 day
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
-  
-#or any other page
-ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/' 
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
+
+# or any other page
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # ACCOUNT_EMAIL_VERIFICATION = "none"
 
@@ -136,7 +135,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'skillmate.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -146,7 +144,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -166,7 +163,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -177,7 +173,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -209,8 +204,8 @@ EMAIL_HOST_PASSWORD = 'hfqnovljglydjjej'
 
 # Cloudinary Django Integration
 
-cloudinary.config (
-    cloud_name = 'dw7whhgws',
-    api_key = '277146194325425',
-    api_secret = 'Z4Y0f8yvo7lRkK2Is1yaOLcJJeo',
+cloudinary.config(
+    cloud_name='dw7whhgws',
+    api_key='277146194325425',
+    api_secret='Z4Y0f8yvo7lRkK2Is1yaOLcJJeo',
 )

@@ -2,10 +2,11 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http.response import JsonResponse
 
 from django.utils.text import slugify
-from .models import Course, Enrollment
+from .models import Course, Enrollment, Post
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -17,6 +18,7 @@ from .forms import CourseEditForm
 from django.contrib import messages
 
 import pytz
+
 
 # Create your views here.
 
@@ -37,6 +39,7 @@ def contact(request):
 def courses(request):
     courses = Course.objects.all()
     return render(request, 'courses.html', {'courses': courses})
+
 
 # def profile(request):
 #     user = request.user
@@ -66,7 +69,7 @@ def dashboard_home(request):
     courses_enrolled = Course.objects.filter(students=user)
     num_courses_enrolled = courses_enrolled.count()
     num_students = Enrollment.objects.filter(course__in=courses_uploaded).values('student').distinct().count()
-    
+
     instructor = request.user
     courses = Course.objects.filter(instructor=instructor)
 
@@ -79,7 +82,8 @@ def dashboard_home(request):
             student = enrollment.student
             enrollment_date_ist = enrollment.enrolled_at.astimezone(ist_tz)
             enrollment_date = enrollment_date_ist.strftime('%d %B %Y %H:%M:%S')
-            enrollments.append({'course_title': course.title, 'student_name': student.username, 'enrollment_date': enrollment_date})
+            enrollments.append(
+                {'course_title': course.title, 'student_name': student.username, 'enrollment_date': enrollment_date})
 
     context = {
         'courses_uploaded': courses_uploaded,
@@ -112,6 +116,7 @@ def courses_uploaded(request):
     courses = Course.objects.filter(instructor=request.user)
     return render(request, 'dashboard/courses-uploaded.html', {'courses': courses})
 
+
 @login_required
 def upload(request):
     if request.method == 'POST':
@@ -132,8 +137,8 @@ def upload(request):
         lesson_title = request.POST['lesson_title']
         lesson_video = request.FILES['lesson_video']
 
-        discounted_price = (discount/100)*price
-        price = price-discounted_price
+        discounted_price = (discount / 100) * price
+        price = price - discounted_price
 
         # Split requirements and content into lists
         requirements_list = [r.strip() for r in requirements.split(', ')]
@@ -164,7 +169,7 @@ def upload(request):
             discount=discount,
             lesson_title=lesson_title,
             lesson_video=lesson_video_upload['secure_url'],
-            )
+        )
         course.save()
 
     return render(request, 'dashboard/upload.html')
@@ -184,7 +189,7 @@ def course_details(request, instructor, slug):
     category_courses = Course.objects.filter(category__iexact=course.category).exclude(id=course.id)[:3]
 
     enrolled = False
-    
+
     if request.user.is_authenticated:
         enrolled = course.students.filter(id=request.user.id).exists()
 
@@ -203,6 +208,7 @@ def course_details(request, instructor, slug):
     }
     return render(request, 'course.html', context)
 
+
 @login_required
 def course_edit(request, slug):
     course = get_object_or_404(Course, slug=slug, instructor=request.user)
@@ -213,6 +219,7 @@ def course_edit(request, slug):
     else:
         form = CourseEditForm(instance=course)
     return render(request, 'dashboard/course-edit.html', {'form': form, 'course': course})
+
 
 @login_required
 def delete_course(request, slug):
@@ -225,6 +232,7 @@ def delete_course(request, slug):
     }
     return render(request, 'dashboard/course-edit.html', context)
 
+
 def category(request, category):
     courses = Course.objects.filter(category__iexact=category)
     context = {
@@ -232,3 +240,12 @@ def category(request, category):
         'courses': courses
     }
     return render(request, 'category.html', context)
+
+
+def like_post(request, post_id) -> JsonResponse:
+    if request.method == "POST":
+        post = get_object_or_404(Post, id=post_id)
+        post.likes += 1
+        post.save()
+        return JsonResponse({"likes": post.likes})
+    return JsonResponse({"error": "Invalid request"}, status=400)

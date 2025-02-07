@@ -49,6 +49,15 @@
             </div>
         </div>
     </div>
+            <!-- Like Button Implementation -->
+        <div class="like-section">
+            <button id="like-button" data-post-id="{{ post.id }}">❤️ Like</button>
+            <p>Likes: <span id="like-count">{{ post.likes }}</span></p>
+        </div>
+    </div>
+</section>
+
+
 </section>
 
 {% endblock content %}
