@@ -71,6 +71,8 @@ INSTALLED_APPS = [
 
     'cloudinary',
 
+    'quizzes',
+
     'main',
 ]
 
